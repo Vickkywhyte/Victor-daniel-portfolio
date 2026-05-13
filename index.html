@@ -1,0 +1,1914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Victor Daniel — Generative AI Engineer · Compliance Systems</title>
+<meta name="description" content="Victor Daniel. Generative AI Engineer at the intersection of compliance, sales, and artificial intelligence. Production RAG systems, agentic workflows, and reliability engineering for high-stakes domains." />
+<meta property="og:title" content="Victor Daniel — Generative AI Engineer" />
+<meta property="og:description" content="Production AI systems engineered for compliance-grade reliability. RAG, agents, and guardrails for financial crime and EDD." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    /* core palette — sky blue / white / black, used with discipline */
+    --black: #0a1220;          /* near-black with a faint blue undertone */
+    --black-2: #1a2438;
+    --ink: #0a1220;
+    --white: #ffffff;
+    --off-white: #f7faff;      /* very faintly cool white */
+    --sky: #4ba3e8;            /* primary sky blue */
+    --sky-deep: #1c6cb8;       /* deeper for hover/depth */
+    --sky-pale: #dbeaf8;       /* pale wash */
+    --sky-mist: #eaf3fb;       /* near-white wash */
+    --rule: rgba(10, 18, 32, 0.12);
+    --rule-strong: rgba(10, 18, 32, 0.85);
+    --muted: #5a6478;
+    --good: #2f9d5b;
+    --serif: 'Fraunces', 'Georgia', serif;
+    --sans: 'Inter', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', 'SF Mono', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ============ TOP RULE ============ */
+  .top-rule {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.92);
+    border-bottom: 1px solid var(--rule);
+    padding: 16px 0;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  .top-rule-inner {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .top-rule .brand {
+    display: flex; gap: 14px; align-items: center;
+    font-weight: 600;
+    color: var(--black);
+  }
+  .top-rule .pip {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--good);
+    box-shadow: 0 0 0 3px rgba(47,157,91,0.18);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 3px rgba(47,157,91,0.18); }
+    50%      { box-shadow: 0 0 0 6px rgba(47,157,91,0.06); }
+  }
+  .top-rule nav { display: flex; gap: 28px; }
+  .top-rule nav a {
+    color: var(--ink);
+    text-decoration: none;
+    opacity: 0.55;
+    transition: opacity .2s, color .2s;
+  }
+  .top-rule nav a:hover { opacity: 1; color: var(--sky-deep); }
+  @media (max-width: 760px) { .top-rule nav { display: none; } }
+
+  /* ============ LAYOUT ============ */
+  .container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 36px;
+  }
+  @media (max-width: 640px) { .container { padding: 0 22px; } }
+
+  section { padding: 96px 0; }
+  section + section { border-top: 1px solid var(--rule); }
+  @media (max-width: 760px) { section { padding: 64px 0; } }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sky-deep);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-weight: 500;
+  }
+  .section-label::before {
+    content: "";
+    width: 32px; height: 2px;
+    background: var(--sky);
+  }
+
+  h2.section-title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(30px, 4.2vw, 48px);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin-bottom: 56px;
+    max-width: 880px;
+    color: var(--black);
+  }
+  h2.section-title em {
+    font-style: italic;
+    color: var(--sky-deep);
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    padding: 80px 0 110px;
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 30%, var(--sky-mist), transparent 70%),
+      linear-gradient(180deg, var(--off-white) 0%, var(--white) 100%);
+  }
+  /* subtle grid backdrop */
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(10,18,32,0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(10,18,32,0.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse 70% 70% at 50% 40%, black 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 40%, black 30%, transparent 75%);
+    pointer-events: none;
+  }
+  .hero-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+  }
+
+  .hero-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--sky-deep);
+    margin-bottom: 36px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    border: 1px solid var(--sky);
+    border-radius: 100px;
+    background: rgba(75, 163, 232, 0.08);
+    font-weight: 500;
+  }
+  .hero-tag .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--sky);
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(48px, 8.5vw, 108px);
+    line-height: 0.96;
+    letter-spacing: -0.04em;
+    margin-bottom: 32px;
+    color: var(--black);
+  }
+  .hero h1 .italic {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--sky-deep);
+  }
+  .hero h1 .small-word {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--muted);
+  }
+
+  .hero-sub {
+    font-family: var(--sans);
+    font-size: clamp(17px, 1.6vw, 19px);
+    font-weight: 400;
+    line-height: 1.55;
+    color: var(--black-2);
+    max-width: 560px;
+    margin-bottom: 40px;
+  }
+
+  .hero-cta-row {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 44px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 22px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all .25s cubic-bezier(.2,.8,.2,1);
+    font-weight: 500;
+  }
+  .btn-primary {
+    background: var(--black);
+    color: var(--white);
+    border: 1px solid var(--black);
+  }
+  .btn-primary:hover {
+    background: var(--sky-deep);
+    border-color: var(--sky-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px -8px rgba(28,108,184,0.5);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--black);
+    border: 1px solid var(--rule-strong);
+  }
+  .btn-secondary:hover {
+    background: var(--black);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+  .btn .arrow { transition: transform .25s; }
+  .btn:hover .arrow { transform: translateX(3px); }
+
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 0;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-top: 1px solid var(--rule);
+    padding-top: 22px;
+  }
+  .hero-meta span { padding-right: 18px; border-right: 1px solid var(--rule); margin-right: 18px; }
+  .hero-meta span:last-child { border-right: none; }
+
+  /* portrait — clean architectural frame with sky-blue corner accent */
+  .portrait-wrap {
+    position: relative;
+    padding: 18px;
+  }
+  .portrait-wrap::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 60%; height: 60%;
+    border-top: 2px solid var(--sky);
+    border-left: 2px solid var(--sky);
+  }
+  .portrait-wrap::after {
+    content: "";
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 60%; height: 60%;
+    border-bottom: 2px solid var(--black);
+    border-right: 2px solid var(--black);
+  }
+  .portrait-card {
+    position: relative;
+    background: var(--white);
+    overflow: hidden;
+    box-shadow: 0 30px 60px -20px rgba(10,18,32,0.25), 0 0 0 1px rgba(10,18,32,0.06);
+    transition: transform .5s cubic-bezier(.2,.8,.2,1);
+  }
+  .portrait-card:hover { transform: translateY(-6px); }
+  .portrait-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .portrait-card .caption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 18px 22px;
+    background: linear-gradient(to top, rgba(10,18,32,0.85), transparent);
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+
+  /* ============ SUMMARY ============ */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 72px;
+    align-items: start;
+  }
+  @media (max-width: 760px) { .summary-grid { grid-template-columns: 1fr; gap: 32px; } }
+
+  .summary-meta {
+    position: sticky;
+    top: 100px;
+  }
+  .summary-meta-block {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .summary-meta-block:first-child { padding-top: 0; }
+  .summary-meta-block .label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sky-deep);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .summary-meta-block .value {
+    font-family: var(--serif);
+    font-size: 17px;
+    color: var(--black);
+    line-height: 1.4;
+  }
+
+  .summary-body {
+    font-family: var(--serif);
+    font-size: clamp(17px, 1.6vw, 20px);
+    line-height: 1.6;
+    color: var(--black);
+    max-width: 740px;
+  }
+  .summary-body p { margin-bottom: 24px; }
+  .summary-body p:first-child::first-letter {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 4.4em;
+    line-height: 0.85;
+    float: left;
+    padding: 6px 14px 0 0;
+    color: var(--sky-deep);
+  }
+  .summary-body strong { font-weight: 600; color: var(--black); }
+  .summary-body .hl {
+    background: linear-gradient(180deg, transparent 65%, var(--sky-pale) 65%);
+    padding: 0 2px;
+  }
+
+  /* ============ COMPETENCIES ============ */
+  .comp-group { margin-bottom: 64px; }
+  .comp-group:last-child { margin-bottom: 0; }
+
+  .comp-group-head {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--black);
+  }
+  .comp-group-num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 36px;
+    color: var(--sky-deep);
+    font-weight: 400;
+    line-height: 1;
+  }
+  .comp-group-name {
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--black);
+    font-weight: 600;
+  }
+  .comp-group-tagline {
+    margin-left: auto;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--muted);
+  }
+  @media (max-width: 600px) { .comp-group-tagline { display: none; } }
+
+  .comp-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 36px 52px;
+  }
+  .comp-item h4 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 19px;
+    margin-bottom: 10px;
+    line-height: 1.25;
+    color: var(--black);
+  }
+  .comp-item p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--black-2);
+  }
+
+  /* ============ PROJECTS ============ */
+  .projects-intro-meta {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+  .projects-intro-meta .stat {
+    border-left: 2px solid var(--sky);
+    padding: 4px 0 4px 16px;
+  }
+  .projects-intro-meta .stat .num {
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--black);
+    line-height: 1;
+  }
+  .projects-intro-meta .stat .lbl {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  .project {
+    display: grid;
+    grid-template-columns: 90px 1fr 300px;
+    gap: 36px;
+    padding: 40px 0;
+    border-top: 1px solid var(--rule);
+    align-items: start;
+    transition: background .25s;
+  }
+  .project:first-of-type { border-top: 2px solid var(--black); }
+  .project:hover { background: var(--sky-mist); }
+  .project:hover .num { color: var(--sky-deep); }
+  @media (max-width: 900px) {
+    .project { grid-template-columns: 70px 1fr; gap: 24px; }
+    .project .meta-col { grid-column: 1 / -1; padding-left: 70px; }
+  }
+  @media (max-width: 500px) {
+    .project { grid-template-columns: 1fr; }
+    .project .meta-col { padding-left: 0; }
+  }
+
+  .project .num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 64px;
+    color: var(--black);
+    line-height: 0.9;
+    opacity: 0.92;
+    transition: color .25s;
+  }
+  .project h3 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(23px, 2.4vw, 30px);
+    line-height: 1.15;
+    margin-bottom: 12px;
+    letter-spacing: -0.015em;
+    color: var(--black);
+  }
+  .project .what {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--muted);
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  .project .body p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--black-2);
+    margin-bottom: 16px;
+  }
+
+  .pill-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+  .pill {
+    display: inline-block;
+    padding: 5px 11px;
+    background: var(--off-white);
+    border: 1px solid var(--rule);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--black-2);
+    border-radius: 3px;
+    transition: all .2s;
+  }
+  .pill:hover { background: var(--sky-pale); border-color: var(--sky); color: var(--sky-deep); }
+
+  .meta-col {
+    font-family: var(--mono);
+    font-size: 11px;
+    line-height: 1.75;
+    color: var(--muted);
+  }
+  .meta-col .label {
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--black);
+    display: block;
+    margin-bottom: 6px;
+    margin-top: 14px;
+    font-size: 10px;
+    font-weight: 600;
+  }
+  .meta-col .label:first-child { margin-top: 0; }
+  .meta-col .reliability {
+    background: var(--black);
+    color: var(--off-white);
+    padding: 12px 14px;
+    margin-top: 16px;
+    font-size: 11px;
+    line-height: 1.55;
+    letter-spacing: 0.02em;
+    border-radius: 4px;
+    border-left: 3px solid var(--sky);
+  }
+  .meta-col .reliability .check {
+    color: var(--sky);
+    margin-right: 6px;
+    font-weight: 600;
+  }
+  .meta-col .reliability .head {
+    color: var(--sky);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 10px;
+    margin-bottom: 4px;
+    display: block;
+  }
+
+  /* ============ PHILOSOPHY (dark) ============ */
+  .philosophy {
+    background: var(--black);
+    color: var(--off-white);
+    position: relative;
+    overflow: hidden;
+  }
+  .philosophy::before {
+    content: "";
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(75,163,232,0.18), transparent 70%);
+    pointer-events: none;
+  }
+  .philosophy::after {
+    content: "";
+    position: absolute;
+    bottom: -200px; left: -200px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(75,163,232,0.10), transparent 70%);
+    pointer-events: none;
+  }
+  .philosophy .container { position: relative; z-index: 1; }
+
+  .philosophy .section-label { color: var(--sky); }
+  .philosophy .section-label::before { background: var(--sky); }
+  .philosophy h2.section-title { color: var(--white); }
+  .philosophy h2.section-title em { color: var(--sky); }
+
+  .principles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1px;
+    background: rgba(75,163,232,0.18);
+    border: 1px solid rgba(75,163,232,0.18);
+    margin-top: 24px;
+  }
+  .principle {
+    background: var(--black);
+    padding: 36px 32px;
+    transition: background .3s;
+  }
+  .principle:hover { background: var(--black-2); }
+  .principle .number {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 36px;
+    color: var(--sky);
+    margin-bottom: 16px;
+    line-height: 1;
+    font-weight: 400;
+  }
+  .principle h4 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 12px;
+    line-height: 1.25;
+    color: var(--white);
+  }
+  .principle p {
+    font-size: 14px;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.72);
+  }
+
+  /* ============ FAILURE MODE TABLE ============ */
+  .fm-table {
+    border-top: 2px solid var(--black);
+    border-bottom: 2px solid var(--black);
+  }
+  .fm-row {
+    display: grid;
+    grid-template-columns: 240px 1fr 120px;
+    gap: 28px;
+    padding: 26px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+    transition: background .2s;
+  }
+  .fm-row:last-child { border-bottom: none; }
+  .fm-row:hover { background: var(--sky-mist); }
+  @media (max-width: 700px) {
+    .fm-row { grid-template-columns: 1fr; gap: 6px; padding: 22px 0; }
+  }
+
+  .fm-row .name {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 21px;
+    letter-spacing: -0.01em;
+    color: var(--black);
+  }
+  .fm-row .desc {
+    font-family: var(--sans);
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--black-2);
+  }
+  .fm-row .ref {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--sky-deep);
+    text-align: right;
+    font-weight: 600;
+  }
+  @media (max-width: 700px) { .fm-row .ref { text-align: left; margin-top: 4px; } }
+
+  /* ============ CONTACT / FOOTER ============ */
+  .contact {
+    padding: 110px 0 90px;
+    background: linear-gradient(180deg, var(--white) 0%, var(--sky-mist) 100%);
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 72px;
+    align-items: end;
+  }
+  @media (max-width: 760px) { .contact-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+  .contact h2 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(40px, 6.5vw, 76px);
+    line-height: 1;
+    letter-spacing: -0.035em;
+    margin-bottom: 28px;
+    color: var(--black);
+  }
+  .contact h2 em { font-style: italic; color: var(--sky-deep); }
+  .contact .lede {
+    font-family: var(--serif);
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--black-2);
+    max-width: 500px;
+  }
+
+  .contact-list { list-style: none; }
+  .contact-list li {
+    border-bottom: 1px solid var(--rule-strong);
+    padding: 18px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .contact-list li:first-child { border-top: 1px solid var(--rule-strong); }
+  .contact-list .label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+  .contact-list .value {
+    font-family: var(--serif);
+    font-size: 16px;
+    color: var(--black);
+    text-decoration: none;
+    transition: color .2s;
+    text-align: right;
+    word-break: break-word;
+  }
+  .contact-list a.value:hover { color: var(--sky-deep); }
+
+  footer {
+    background: var(--black);
+    color: rgba(255,255,255,0.5);
+    padding: 28px 0;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  footer .accent { color: var(--sky); }
+
+  /* ============ MOTION SYSTEM ============ */
+
+  /* base reveal — fade + rise */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.95s cubic-bezier(.2,.7,.2,1),
+      transform 0.95s cubic-bezier(.2,.7,.2,1);
+    will-change: opacity, transform;
+  }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* directional variants */
+  .reveal-left  { transform: translateX(-32px); }
+  .reveal-right { transform: translateX(32px); }
+  .reveal-left.in, .reveal-right.in { transform: translateX(0); }
+  .reveal-scale { transform: scale(0.96); }
+  .reveal-scale.in { transform: scale(1); }
+  .reveal-blur  { filter: blur(8px); }
+  .reveal-blur.in { filter: blur(0); transition: opacity .95s, transform .95s, filter 1.2s ease; }
+
+  /* === scroll progress bar at top === */
+  .scroll-progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 2px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--sky), var(--sky-deep));
+    z-index: 200;
+    transition: width 0.08s linear;
+    box-shadow: 0 0 12px rgba(75,163,232,0.5);
+  }
+
+  /* === animated underline for nav === */
+  .top-rule nav a {
+    position: relative;
+  }
+  .top-rule nav a::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: -4px;
+    width: 100%; height: 1px;
+    background: var(--sky-deep);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .35s cubic-bezier(.2,.8,.2,1);
+  }
+  .top-rule nav a:hover::after { transform: scaleX(1); }
+
+  /* === hero word-by-word reveal === */
+  .hero h1 .line {
+    display: block;
+    overflow: hidden;
+  }
+  .hero h1 .inner {
+    display: inline-block;
+    transform: translateY(110%);
+    transition: transform 1.1s cubic-bezier(.2,.8,.2,1);
+  }
+  .hero h1.in .inner { transform: translateY(0); }
+  .hero h1.in .inner.l2 { transition-delay: 0.10s; }
+  .hero h1.in .inner.l3 { transition-delay: 0.20s; }
+  .hero h1.in .inner.l4 { transition-delay: 0.30s; }
+
+  /* === hero tag pulse on entry === */
+  .hero-tag .dot {
+    animation: dotPulse 2.4s ease-in-out infinite;
+  }
+  @keyframes dotPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50%      { transform: scale(1.3); opacity: 0.6; }
+  }
+
+  /* === portrait floating parallax === */
+  .portrait-wrap {
+    transition: transform 0.4s cubic-bezier(.2,.8,.2,1);
+  }
+  .portrait-wrap.float {
+    animation: floaty 7s ease-in-out infinite;
+  }
+  @keyframes floaty {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-10px); }
+  }
+  .portrait-card {
+    transition:
+      transform 0.6s cubic-bezier(.2,.8,.2,1),
+      box-shadow 0.6s cubic-bezier(.2,.8,.2,1);
+  }
+  .portrait-card:hover {
+    transform: translateY(-8px) scale(1.012);
+    box-shadow: 0 40px 80px -20px rgba(28,108,184,0.45), 0 0 0 1px rgba(10,18,32,0.08);
+  }
+
+  /* === btn ripple shine === */
+  .btn {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn::before {
+    content: "";
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.25), transparent);
+    transition: left 0.7s cubic-bezier(.2,.8,.2,1);
+    pointer-events: none;
+  }
+  .btn:hover::before { left: 100%; }
+
+  /* === section-label sliding rule === */
+  .section-label::before {
+    transition: width 0.6s cubic-bezier(.2,.8,.2,1);
+  }
+  .section-label.in-view::before { width: 64px; }
+
+  /* === section titles: word reveal === */
+  .section-title .word {
+    display: inline-block;
+    transform: translateY(110%);
+    opacity: 0;
+    transition:
+      transform 0.85s cubic-bezier(.2,.8,.2,1),
+      opacity 0.85s cubic-bezier(.2,.8,.2,1);
+  }
+  .section-title .word-mask {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    line-height: 1.05;
+    padding-bottom: 0.05em;
+  }
+  .section-title.in .word {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  /* === stats: counter glow + entry === */
+  .projects-intro-meta .stat {
+    transition: border-color 0.4s, transform 0.4s cubic-bezier(.2,.8,.2,1);
+  }
+  .projects-intro-meta .stat:hover {
+    border-color: var(--sky-deep);
+    transform: translateY(-3px);
+  }
+  .projects-intro-meta .stat:hover .num { color: var(--sky-deep); }
+  .projects-intro-meta .stat .num {
+    transition: color 0.3s;
+    display: inline-block;
+  }
+
+  /* === project rows: cascade entry + sweep === */
+  .project {
+    position: relative;
+    transition:
+      background 0.4s cubic-bezier(.2,.8,.2,1),
+      transform 0.4s cubic-bezier(.2,.8,.2,1);
+  }
+  .project::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: -1px;
+    width: 0; height: 2px;
+    background: var(--sky);
+    transition: width 0.6s cubic-bezier(.2,.8,.2,1);
+  }
+  .project:hover::after { width: 100%; }
+  .project:hover .num {
+    transform: translateX(8px);
+    transition: transform 0.4s cubic-bezier(.2,.8,.2,1);
+  }
+  .project .num { transition: color 0.3s, transform 0.4s cubic-bezier(.2,.8,.2,1); }
+
+  /* === pill bounce on hover === */
+  .pill {
+    transition:
+      background 0.25s,
+      border-color 0.25s,
+      color 0.25s,
+      transform 0.25s cubic-bezier(.2,.8,.2,1);
+  }
+  .pill:hover {
+    transform: translateY(-2px) scale(1.04);
+  }
+
+  /* === principle cards lift === */
+  .principle {
+    transition: background 0.35s, transform 0.4s cubic-bezier(.2,.8,.2,1);
+  }
+  .principle:hover {
+    transform: translateY(-4px);
+  }
+  .principle .number {
+    transition: transform 0.4s cubic-bezier(.2,.8,.2,1);
+    transform-origin: left center;
+  }
+  .principle:hover .number {
+    transform: scale(1.15);
+    color: var(--white);
+  }
+
+  /* === failure-mode rows: chevron slide === */
+  .fm-row {
+    transition: background 0.25s, padding-left 0.35s cubic-bezier(.2,.8,.2,1);
+  }
+  .fm-row:hover {
+    padding-left: 12px;
+  }
+  .fm-row .name {
+    transition: color 0.25s;
+  }
+  .fm-row:hover .name { color: var(--sky-deep); }
+
+  /* === contact list: arrow slide === */
+  .contact-list .value {
+    position: relative;
+    transition: color 0.25s, transform 0.3s cubic-bezier(.2,.8,.2,1);
+    display: inline-block;
+  }
+  a.value:hover { transform: translateX(-4px); }
+
+  /* === cursor follower — desktop only, hidden on touch === */
+  .cursor-dot, .cursor-ring {
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    border-radius: 50%;
+    mix-blend-mode: difference;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .cursor-dot {
+    width: 6px; height: 6px;
+    background: var(--sky);
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s, transform 0.12s ease-out;
+  }
+  .cursor-ring {
+    width: 32px; height: 32px;
+    border: 1.5px solid var(--sky);
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s, transform 0.25s cubic-bezier(.2,.8,.2,1), width 0.25s, height 0.25s;
+  }
+  body.cursor-on .cursor-dot,
+  body.cursor-on .cursor-ring { opacity: 1; }
+  body.cursor-hover .cursor-ring {
+    width: 56px; height: 56px;
+    background: rgba(75,163,232,0.15);
+    border-color: var(--sky-deep);
+  }
+  body.cursor-hover .cursor-dot { opacity: 0.4; }
+  @media (hover: none), (pointer: coarse) {
+    .cursor-dot, .cursor-ring { display: none; }
+  }
+
+  /* === hero grid: subtle parallax === */
+  .hero::before {
+    transition: transform 0.4s ease-out;
+    will-change: transform;
+  }
+
+  /* === scroll-cue chevron at hero bottom === */
+  .scroll-cue {
+    position: absolute;
+    bottom: 24px; left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: cueFade 1s ease 1.6s forwards;
+    z-index: 2;
+  }
+  .scroll-cue .line {
+    width: 1px; height: 32px;
+    background: linear-gradient(to bottom, var(--sky), transparent);
+    animation: cueLine 2s ease-in-out infinite;
+  }
+  @keyframes cueFade { to { opacity: 1; } }
+  @keyframes cueLine {
+    0%, 100% { transform: scaleY(0.4); transform-origin: top; }
+    50%      { transform: scaleY(1); transform-origin: top; }
+  }
+  @media (max-width: 760px) { .scroll-cue { display: none; } }
+
+  /* === reduced motion override — kill all the joy === */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+    .reveal, .reveal.in,
+    .hero h1 .inner,
+    .section-title .word { opacity: 1 !important; transform: none !important; filter: none !important; }
+    .portrait-wrap.float { animation: none !important; }
+    .cursor-dot, .cursor-ring { display: none !important; }
+    .scroll-progress { display: none; }
+    .scroll-cue { display: none; }
+  }
+
+  ::selection { background: var(--sky); color: var(--white); }
+</style>
+</head>
+<body>
+
+<!-- ===================== TOP RULE ===================== -->
+<header class="top-rule">
+  <div class="top-rule-inner">
+    <div class="brand">
+      <span class="pip" aria-hidden="true"></span>
+      <span>Victor Daniel</span>
+      <span style="opacity:.4">·</span>
+      <span style="opacity:.65; font-weight:400;">Available for engagements</span>
+    </div>
+    <nav>
+      <a href="#summary">Profile</a>
+      <a href="#competencies">Competencies</a>
+      <a href="#projects">Projects</a>
+      <a href="#standards">Standards</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-tag reveal">
+          <span class="dot" aria-hidden="true"></span>
+          <span>Generative AI Engineer · Compliance · Sales</span>
+        </div>
+
+        <h1 class="reveal hero-h1">
+          <span class="line"><span class="inner italic">Reliable</span></span>
+          <span class="line"><span class="inner l2">AI systems</span></span>
+          <span class="line"><span class="inner l3"><span class="small-word">for</span> high-stakes</span></span>
+          <span class="line"><span class="inner l4">domains.</span></span>
+        </h1>
+
+        <p class="hero-sub reveal">
+          I design and ship production AI — RAG pipelines, multi-agent systems, and quality
+          frameworks — for the kind of decisions you cannot afford to get wrong. Compliance,
+          financial crime, enhanced due diligence. Built with a sales-trained ear for what
+          stakeholders actually need.
+        </p>
+
+        <div class="hero-cta-row reveal">
+          <a href="#projects" class="btn btn-primary">
+            <span>View Portfolio</span>
+            <span class="arrow">→</span>
+          </a>
+          <a href="#contact" class="btn btn-secondary">
+            <span>Get in Touch</span>
+          </a>
+        </div>
+
+        <div class="hero-meta reveal">
+          <span>Tallinn, EE</span>
+          <span>Wise · EDD Quality</span>
+          <span>CFCS · ACFCS</span>
+          <span>Est. 2022</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="portrait-wrap reveal reveal-scale">
+          <div class="portrait-card">
+            <img src="victor.jpg" alt="Victor Daniel" />
+            <div class="caption">
+              <span>Victor A. Daniel</span>
+              <span>Tallinn · EE</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-cue" aria-hidden="true">
+    <span>Scroll</span>
+    <span class="line"></span>
+  </div>
+</section>
+
+<!-- ===================== PROFESSIONAL SUMMARY ===================== -->
+<section id="summary">
+  <div class="container">
+    <div class="section-label">№ 02 — Professional Summary</div>
+    <h2 class="section-title reveal">
+      Compliance-grade rigour, <em>sales-trained</em> communication, production AI engineering.
+    </h2>
+
+    <div class="summary-grid">
+      <aside class="summary-meta">
+        <div class="summary-meta-block">
+          <div class="label">Role</div>
+          <div class="value">Generative AI Engineer</div>
+        </div>
+        <div class="summary-meta-block">
+          <div class="label">Domain</div>
+          <div class="value">Financial Crime · AML · EDD</div>
+        </div>
+        <div class="summary-meta-block">
+          <div class="label">Stack</div>
+          <div class="value">Python · FastAPI · RAG · OpenRouter · Vector Search</div>
+        </div>
+        <div class="summary-meta-block">
+          <div class="label">Strengths</div>
+          <div class="value">Reliability engineering · Stakeholder translation · Sales fluency</div>
+        </div>
+        <div class="summary-meta-block">
+          <div class="label">Posture</div>
+          <div class="value">Reliability-first. Demos do not ship.</div>
+        </div>
+      </aside>
+
+      <div class="summary-body reveal reveal-right">
+        <p>
+          I am a Generative AI Engineer working where compliance meets artificial intelligence — a
+          domain where hallucinations have regulatory consequences and a careless agent can move
+          money it should not have touched. My work sits in that intersection. I have spent three
+          years inside a financial institution learning what a real audit trail looks like, and I
+          build AI systems that respect that bar.
+        </p>
+        <p>
+          My background spans three disciplines that are usually kept apart: <strong>compliance</strong> (where
+          the cost of being wrong is measured in regulatory exposure), <strong>sales and customer-facing
+          work</strong> (where I learned how to translate technical capability into something a stakeholder
+          can actually buy into), and <strong>AI engineering</strong> (where I now build the systems). The
+          sales background matters more than it sounds. <span class="hl">An AI system that no one in the business
+          trusts is not a system — it's a demo on a shelf.</span> Knowing how to listen for what a
+          stakeholder actually needs, how to scope a use case to something real, and how to
+          present reliability as a feature, not an afterthought — that is sales work, and it is
+          where most AI projects fail before they start.
+        </p>
+        <p>
+          At Wise, I work as an Enhanced Due Diligence Quality Specialist — running root cause
+          analysis on AI conversation failures, building a five-category diagnostic framework that
+          cut investigation time by <strong>35%</strong>, and feeding the golden dataset that retrains the models I
+          assess. Alongside that, I ship: a RAG-based CGSS sanctions assistant, a multi-agent
+          competitive intelligence council, a Gemini-based EDD QA automation, and VeriFlow KYC.
+          Production systems, not notebooks.
+        </p>
+        <p>
+          What separates the systems I build is what I refuse to deploy. I treat a "?" on the
+          pre-deployment checklist as a risk, not a to-do. I do not ship agents without
+          irreversible-action gates. I do not ship RAG without traceable attribution. The
+          engineering discipline comes from the compliance background; the stakeholder discipline
+          comes from sales; the compliance instincts made the engineering better. All three are
+          the work.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== COMPETENCIES ===================== -->
+<section id="competencies">
+  <div class="container">
+    <div class="section-label">№ 03 — Technical AI Competencies</div>
+    <h2 class="section-title reveal">
+      Seven capabilities, organised by the <em>order</em> in which they matter.
+    </h2>
+
+    <!-- DESIGN -->
+    <div class="comp-group reveal">
+      <div class="comp-group-head">
+        <span class="comp-group-num">i.</span>
+        <span class="comp-group-name">Design</span>
+        <span class="comp-group-tagline">— deciding what to build, and what not to build</span>
+      </div>
+      <div class="comp-list">
+        <div class="comp-item">
+          <h4>Use-case evaluation</h4>
+          <p>Identifying when AI genuinely adds value versus when a deterministic rule, a SQL query, or a simpler automation does the same job with less risk. The first decision is whether to use a model at all.</p>
+        </div>
+        <div class="comp-item">
+          <h4>Model &amp; cost selection</h4>
+          <p>Choosing between model tiers based on task complexity, latency requirements, and budget — routing easy queries to cheaper models and reserving frontier models for what genuinely demands them. Cost discipline as a design constraint.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- BUILD -->
+    <div class="comp-group reveal">
+      <div class="comp-group-head">
+        <span class="comp-group-num">ii.</span>
+        <span class="comp-group-name">Build</span>
+        <span class="comp-group-tagline">— making systems do what they are supposed to do</span>
+      </div>
+      <div class="comp-list">
+        <div class="comp-item">
+          <h4>Prompt engineering for structured outputs</h4>
+          <p>Designing prompts that produce consistent, parseable outputs from LLMs — schemas, decision objects, structured rationales — so the model becomes a reliable component in a larger system rather than a wildcard.</p>
+        </div>
+        <div class="comp-item">
+          <h4>Retrieval-augmented generation</h4>
+          <p>Hands-on RAG: chunking strategy, retrieval (TF-IDF and vector), grounding, attribution, and the trade-offs between recall, precision, and answer faithfulness. Shipped multiple RAG systems including CGSS sanctions, HR policy, and EDD QA.</p>
+        </div>
+        <div class="comp-item">
+          <h4>Agent system design</h4>
+          <p>Understanding how agent loops actually work — Observe-Reason-Act, scratchpads, tool use, max-iterations — and the failure modes they introduce. Building with scope constraints, validation gates, and escalation paths from day one, not as a retrofit.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECURE -->
+    <div class="comp-group reveal">
+      <div class="comp-group-head">
+        <span class="comp-group-num">iii.</span>
+        <span class="comp-group-name">Secure</span>
+        <span class="comp-group-tagline">— assuming the inputs are hostile</span>
+      </div>
+      <div class="comp-list">
+        <div class="comp-item">
+          <h4>AI security &amp; defence-in-depth</h4>
+          <p>Recognising prompt injection in retrieved documents, tool outputs, and user inputs. Designing layered defences — sanitisation, scope guards, output validation, irreversible-action gates — on the assumption that any one layer will eventually fail.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- EVALUATE -->
+    <div class="comp-group reveal">
+      <div class="comp-group-head">
+        <span class="comp-group-num">iv.</span>
+        <span class="comp-group-name">Evaluate</span>
+        <span class="comp-group-tagline">— knowing whether the system actually works</span>
+      </div>
+      <div class="comp-list">
+        <div class="comp-item">
+          <h4>Reliability assessment</h4>
+          <p>Applying the Trust Checklist before deployment — grounding, attributability, stress-testing for hallucination, human-in-the-loop, feedback loops, out-of-scope behaviour, and drift monitoring. A "?" is treated as a risk, not a to-do.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PORTFOLIO PROJECTS ===================== -->
+<section id="projects">
+  <div class="container">
+    <div class="section-label">№ 04 — Portfolio Projects</div>
+    <h2 class="section-title reveal">
+      Six shipped systems. Each <em>engineered</em> against a specific failure mode.
+    </h2>
+
+    <div class="projects-intro-meta reveal reveal-blur">
+      <div class="stat">
+        <div class="num">06</div>
+        <div class="lbl">Production systems</div>
+      </div>
+      <div class="stat">
+        <div class="num">35%</div>
+        <div class="lbl">Investigation time cut</div>
+      </div>
+      <div class="stat">
+        <div class="num">5+</div>
+        <div class="lbl">Years compliance</div>
+      </div>
+      <div class="stat">
+        <div class="num">100%</div>
+        <div class="lbl">Trust checklist before deploy</div>
+      </div>
+    </div>
+
+    <!-- 01 -->
+    <article class="project reveal">
+      <div class="num">01</div>
+      <div class="body">
+        <h3>CGSS Sanctions Assistant</h3>
+        <div class="what">A RAG-based compliance training tool for the ACAMS CGSS examination — ingests sanctions guides, retrieves the relevant segment, and answers questions on OFAC regulations, sanctions frameworks, and evasion techniques.</div>
+        <p>Built to be a reference tool, not a guessing tool. Every answer maps back to a specific passage in the source corpus, with retrieval surfaced alongside the answer so the user can verify before they trust.</p>
+        <div class="pill-row">
+          <span class="pill">Python</span><span class="pill">FastAPI</span><span class="pill">TF-IDF</span><span class="pill">OpenRouter</span><span class="pill">Vercel</span>
+        </div>
+      </div>
+      <div class="meta-col">
+        <span class="label">Skills demonstrated</span>
+        RAG system development<br/>
+        Prompt design (structured outputs)<br/>
+        Reliability assessment
+        <div class="reliability">
+          <span class="head">Trust Checklist · 01–02</span>
+          Grounded in verified source passages with traceable attribution.
+        </div>
+      </div>
+    </article>
+
+    <!-- 02 -->
+    <article class="project reveal">
+      <div class="num">02</div>
+      <div class="body">
+        <h3>Wise Competitive Intelligence Council</h3>
+        <div class="what">A multi-agent system simulating four analyst roles — Market, Financial, Regulatory, GTM — with peer review and executive synthesis, producing threat ratings and strategic briefings for cross-border payments.</div>
+        <p>An agentic workflow that takes the messy work of cross-functional competitive analysis and makes it auditable: each agent's reasoning is visible, each role has scoped responsibilities, and the synthesis step is the place where errors are caught rather than amplified.</p>
+        <div class="pill-row">
+          <span class="pill">FastAPI</span><span class="pill">OpenRouter</span><span class="pill">GPT-4o</span><span class="pill">Claude</span><span class="pill">Llama</span><span class="pill">Vercel</span>
+        </div>
+      </div>
+      <div class="meta-col">
+        <span class="label">Skills demonstrated</span>
+        Agent system design<br/>
+        Model &amp; cost selection<br/>
+        Prompt design (structured outputs)
+        <div class="reliability">
+          <span class="head">Agent Checklist · 01, 04, 05</span>
+          Scoped analyst roles, logged intermediate reasoning, max-iteration cap enforced.
+        </div>
+      </div>
+    </article>
+
+    <!-- 03 -->
+    <article class="project reveal">
+      <div class="num">03</div>
+      <div class="body">
+        <h3>Budget Assistant <span style="font-family: var(--mono); font-size: 13px; color: var(--muted); letter-spacing:.05em;">— RAG practice</span></h3>
+        <div class="what">An HR policy Q&amp;A chatbot that automates employee questions on development budgets — eligibility, amounts, approvals, reimbursement — reducing HR ticket volume on repetitive enquiries.</div>
+        <p>A focused RAG application built deliberately narrow. Out-of-scope questions are declined rather than answered from training memory; in-scope questions return the policy section that supports the answer.</p>
+        <div class="pill-row">
+          <span class="pill">FastAPI</span><span class="pill">OpenRouter</span><span class="pill">TF-IDF</span><span class="pill">Vercel</span>
+        </div>
+      </div>
+      <div class="meta-col">
+        <span class="label">Skills demonstrated</span>
+        RAG system development<br/>
+        Use-case evaluation<br/>
+        Prompt design
+        <div class="reliability">
+          <span class="head">Trust Checklist · 01, 06</span>
+          Grounded answers; out-of-scope behaviour tested and handled with graceful decline.
+        </div>
+      </div>
+    </article>
+
+    <!-- 04 -->
+    <article class="project reveal">
+      <div class="num">04</div>
+      <div class="body">
+        <h3>Gemini Gem for EDD QA Automation</h3>
+        <div class="what">A custom Google Gemini assistant that analyses Enhanced Due Diligence compliance reviews and produces structured quality assurance reports against an internal rubric.</div>
+        <p>The first reviewer pass for a quality function. Outputs are structured, severity-scored, and designed for human reviewers to sign off on — never to auto-execute. A textbook human-in-the-loop deployment.</p>
+        <div class="pill-row">
+          <span class="pill">Google Gemini</span><span class="pill">Prompt Engineering</span><span class="pill">QA Rubric Design</span>
+        </div>
+      </div>
+      <div class="meta-col">
+        <span class="label">Skills demonstrated</span>
+        Prompt design (structured outputs)<br/>
+        Reliability assessment<br/>
+        Use-case evaluation
+        <div class="reliability">
+          <span class="head">Trust Checklist · 04</span>
+          Human-in-the-loop required for any irreversible QA judgement.
+        </div>
+      </div>
+    </article>
+
+    <!-- 05 -->
+    <article class="project reveal">
+      <div class="num">05</div>
+      <div class="body">
+        <h3>RCA Framework for AI Conversation Analysis</h3>
+        <div class="what">A root cause analysis framework that diagnoses AI conversation failures across five categories — Intent Error, Retrieval Failure, Model Limitation, Prompt Engineering, and Compliance Risk — with severity scoring and actionable fixes.</div>
+        <p>Cut investigation time by 35% and directly fed the golden dataset used to retrain the models being assessed. The framework Product and Ops teams now use to triage incidents and decide what to fix versus what to escalate.</p>
+        <div class="pill-row">
+          <span class="pill">Framework Design</span><span class="pill">Golden Dataset</span><span class="pill">Severity Scoring</span><span class="pill">Cross-functional</span>
+        </div>
+      </div>
+      <div class="meta-col">
+        <span class="label">Skills demonstrated</span>
+        Reliability assessment<br/>
+        Agent system design<br/>
+        AI security awareness
+        <div class="reliability">
+          <span class="head">Trust Checklist · 05, 07</span>
+          A feedback loop and drift-detection mechanism, operationalised end-to-end.
+        </div>
+      </div>
+    </article>
+
+    <!-- 06 -->
+    <article class="project reveal">
+      <div class="num">06</div>
+      <div class="body">
+        <h3>VeriFlow KYC</h3>
+        <div class="what">An AI-powered Know Your Customer platform that automates identity document verification, facial recognition, and global sanctions screening — with a full audit trail for compliance review.</div>
+        <p>The pieces of KYC that are mechanical, automated; the pieces that require judgement, surfaced clearly for a human reviewer with the evidence laid out next to the decision. Every action is logged and inspectable after the fact.</p>
+        <div class="pill-row">
+          <span class="pill">React 18 + Vite</span><span class="pill">Node.js</span><span class="pill">Prisma</span><span class="pill">PostgreSQL</span><span class="pill">AWS Textract</span><span class="pill">Supabase</span>
+        </div>
+      </div>
+      <div class="meta-col">
+        <span class="label">Skills demonstrated</span>
+        Use-case evaluation<br/>
+        Agent system design<br/>
+        AI security awareness
+        <div class="reliability">
+          <span class="head">Agent Checklist · 03, 04, 10</span>
+          Pre-action approval gates, full audit logging, production monitoring designed-in.
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===================== PHILOSOPHY (DARK) ===================== -->
+<section id="standards" class="philosophy">
+  <div class="container">
+    <div class="section-label">№ 05 — Deployment Standards</div>
+    <h2 class="section-title reveal">
+      What the Trust Checklist actually <em>means</em> in practice.
+    </h2>
+
+    <p style="font-family: var(--serif); font-size: 19px; line-height: 1.6; color: rgba(255,255,255,0.75); max-width: 740px; margin-bottom: 40px;" class="reveal">
+      These are not aspirations. They are the conditions under which I will and will not put a
+      system in front of users. Each one corresponds to a specific item on a pre-deployment
+      checklist I have learned to take seriously.
+    </p>
+
+    <div class="principles">
+      <div class="principle">
+        <div class="number">i.</div>
+        <h4>I do not deploy systems that hallucinate without detection.</h4>
+        <p>If a factual claim cannot be traced to a verified source, the system does not ship. Grounding and attribution are not features — they are the precondition for the system existing at all.</p>
+      </div>
+      <div class="principle">
+        <div class="number">ii.</div>
+        <h4>A "?" is a risk, not a to-do.</h4>
+        <p>Unknown answers on a pre-deployment review are unacknowledged risks. They are resolved before deployment, not after the first incident.</p>
+      </div>
+      <div class="principle">
+        <div class="number">iii.</div>
+        <h4>Irreversible actions require human approval.</h4>
+        <p>Sending a message, modifying a record, executing a transaction — these are gated. Not optionally. The gate is a mandatory pause point, not a checkbox the user has to opt into.</p>
+      </div>
+      <div class="principle">
+        <div class="number">iv.</div>
+        <h4>Agents have explicit scope. So do I.</h4>
+        <p>"Be helpful" is not a scope constraint. Every agent I build has an explicit list of what it is authorised to do and what it is not, and an escalation path for the case where the goal requires stepping outside it.</p>
+      </div>
+      <div class="principle">
+        <div class="number">v.</div>
+        <h4>External inputs are hostile until proven otherwise.</h4>
+        <p>Retrieved documents, tool outputs, user submissions — all of it is sanitised before reaching the model. Prompt injection is treated as a real failure mode, not a hypothetical.</p>
+      </div>
+      <div class="principle">
+        <div class="number">vi.</div>
+        <h4>The stress test happens before the user does.</h4>
+        <p>Out-of-scope inputs, post-cutoff questions, deliberately ambiguous prompts — these are run through the system on purpose, before deployment. If no one has tried to make the system fail, it will fail in production.</p>
+      </div>
+      <div class="principle">
+        <div class="number">vii.</div>
+        <h4>Monitoring is the system, too.</h4>
+        <p>Iteration counts, tool success rates, escalation rates, output quality. A deployment without a monitoring plan is a deployment without a way to know whether it is still working.</p>
+      </div>
+      <div class="principle">
+        <div class="number">viii.</div>
+        <h4>Passing every check is not a guarantee of correctness.</h4>
+        <p>It is a system designed to catch and correct errors. That is the entire goal. The discipline is what makes the system survivable when it inevitably surprises me.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAILURE MODES ===================== -->
+<section>
+  <div class="container">
+    <div class="section-label">№ 06 — Quick Reference</div>
+    <h2 class="section-title reveal">
+      The seven failure modes I design <em>against</em>.
+    </h2>
+
+    <div class="fm-table reveal">
+      <div class="fm-row">
+        <div class="name">Hallucination</div>
+        <div class="desc">Every factual claim must trace to a specific source passage. Ungrounded systems are not deployed. Stress-tested against post-cutoff and out-of-corpus prompts before going live.</div>
+        <div class="ref">Trust · 01–03</div>
+      </div>
+      <div class="fm-row">
+        <div class="name">Irreversibility</div>
+        <div class="desc">Sending, modifying, deleting, transacting — all gated behind mandatory human approval. The gate is not optional. Asynchronous approval is fine; bypass is not.</div>
+        <div class="ref">Trust 04 · Agent 03</div>
+      </div>
+      <div class="fm-row">
+        <div class="name">Cascading errors</div>
+        <div class="desc">Tools tested in isolation before integration. Tool outputs validated before use in subsequent reasoning. Intermediate steps logged so root-cause is recoverable. Confidence thresholds for escalation.</div>
+        <div class="ref">Agent · 04, 07, 09</div>
+      </div>
+      <div class="fm-row">
+        <div class="name">Scope creep</div>
+        <div class="desc">Scope defined explicitly in the system prompt — what is permitted and what is forbidden. Out-of-scope queries trigger declined behaviour or escalation, not silent attempts to comply.</div>
+        <div class="ref">Trust 06 · Agent 01, 08</div>
+      </div>
+      <div class="fm-row">
+        <div class="name">Prompt injection</div>
+        <div class="desc">All external inputs — retrieved documents, tool returns, user content — sanitised before entering model context. Treated as the primary attack surface for agentic systems, not an edge case.</div>
+        <div class="ref">Agent · 02</div>
+      </div>
+      <div class="fm-row">
+        <div class="name">Undetected failure</div>
+        <div class="desc">Max-iteration caps with defined behaviour on hit. User feedback loops as a minimum viable detection mechanism. Confidence-triggered escalation paths rather than confident wrong answers.</div>
+        <div class="ref">Trust 05 · Agent 05, 06</div>
+      </div>
+      <div class="fm-row">
+        <div class="name">Drift &amp; degradation</div>
+        <div class="desc">A monitoring plan with defined metrics, thresholds, and response actions. Models do not degrade themselves; the world they answer about does. The plan is for detecting that gap.</div>
+        <div class="ref">Trust 07 · Agent 10</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="section-label">№ 07 — Contact</div>
+    <div class="contact-grid">
+      <div>
+        <h2 class="reveal">Let's build something <em>worth deploying</em>.</h2>
+        <p class="lede">If you are working on production AI in a domain where the cost of error is real — compliance, financial crime, regulated industries, audit — I would like to hear about it.</p>
+      </div>
+      <div>
+        <ul class="contact-list">
+          <li>
+            <span class="label">Email</span>
+            <a class="value" href="mailto:victordaniel9448@yahoo.com">victordaniel9448@yahoo.com</a>
+          </li>
+          <li>
+            <span class="label">LinkedIn</span>
+            <a class="value" href="https://www.linkedin.com/in/victor-daniel-cfcs-453983191/" target="_blank" rel="noopener">Connect →</a>
+          </li>
+          <li>
+            <span class="label">Phone</span>
+            <a class="value" href="tel:+37253967719">+372 5396 7719</a>
+          </li>
+          <li>
+            <span class="label">Location</span>
+            <span class="value">Tallinn, Estonia</span>
+          </li>
+          <li>
+            <span class="label">Status</span>
+            <span class="value">Open to engagements</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="container">
+    <span>Victor Daniel · Generative AI Engineer · 2026</span>
+    <span>Built <span class="accent">reliable</span>. Designed to fail safely.</span>
+  </div>
+</footer>
+
+<!-- ===================== MOTION LAYER ===================== -->
+<div class="scroll-progress" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+<div class="cursor-dot" aria-hidden="true"></div>
+
+<script>
+(function () {
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- 1. Scroll progress bar ---------- */
+  const progressBar = document.querySelector('.scroll-progress');
+  if (progressBar && !reduced) {
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const h = document.documentElement;
+          const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight);
+          progressBar.style.width = (Math.min(Math.max(scrolled, 0), 1) * 100) + '%';
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
+  /* ---------- 2. Split section titles into words for staggered reveal ---------- */
+  document.querySelectorAll('.section-title').forEach(title => {
+    if (title.dataset.split) return;
+    title.dataset.split = '1';
+    // Walk children, wrapping plain-text words; preserve <em> tags
+    const fragments = [];
+    title.childNodes.forEach(node => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        const words = node.textContent.split(/(\s+)/);
+        words.forEach(w => {
+          if (w.trim() === '') { fragments.push(document.createTextNode(w)); return; }
+          const mask = document.createElement('span');
+          mask.className = 'word-mask';
+          const word = document.createElement('span');
+          word.className = 'word';
+          word.textContent = w;
+          mask.appendChild(word);
+          fragments.push(mask);
+        });
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+        // For <em>, wrap as a single word
+        const mask = document.createElement('span');
+        mask.className = 'word-mask';
+        const word = document.createElement('span');
+        word.className = 'word';
+        word.appendChild(node.cloneNode(true));
+        mask.appendChild(word);
+        fragments.push(mask);
+      }
+    });
+    title.innerHTML = '';
+    fragments.forEach(f => title.appendChild(f));
+    // Set per-word delays
+    const words = title.querySelectorAll('.word');
+    words.forEach((w, i) => {
+      w.style.transitionDelay = (i * 0.06) + 's';
+    });
+  });
+
+  /* ---------- 3. IntersectionObserver: reveals + section-title trigger + hero h1 ---------- */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        // also pulse section-label rule
+        const label = e.target.closest('section')?.querySelector('.section-label');
+        if (label) label.classList.add('in-view');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal, .section-title').forEach(el => io.observe(el));
+
+  // Hero H1: kick its line-by-line reveal on load (don't wait for IO)
+  const heroH1 = document.querySelector('.hero h1');
+  if (heroH1) {
+    requestAnimationFrame(() => {
+      setTimeout(() => heroH1.classList.add('in'), 200);
+    });
+  }
+
+  /* ---------- 4. Stagger reveals within hero ---------- */
+  document.querySelectorAll('.hero .reveal').forEach((el, i) => {
+    el.style.transitionDelay = (0.1 + i * 0.1) + 's';
+  });
+
+  /* ---------- 4b. Stagger siblings: projects + principles ---------- */
+  document.querySelectorAll('.project.reveal').forEach((el, i) => {
+    el.style.transitionDelay = (Math.min(i, 4) * 0.08) + 's';
+  });
+  // Principles aren't .reveal individually; observe parent and stamp delays
+  const principlesGrid = document.querySelector('.principles');
+  if (principlesGrid) {
+    principlesGrid.querySelectorAll('.principle').forEach((el, i) => {
+      el.style.transitionDelay = (i * 0.05) + 's';
+    });
+  }
+  // Failure mode rows
+  document.querySelectorAll('.fm-row').forEach((el, i) => {
+    el.classList.add('reveal');
+    el.style.transitionDelay = (i * 0.05) + 's';
+    io.observe(el);
+  });
+  // Competency items
+  document.querySelectorAll('.comp-item').forEach((el, i) => {
+    el.classList.add('reveal');
+    el.style.transitionDelay = ((i % 3) * 0.08) + 's';
+    io.observe(el);
+  });
+
+  /* ---------- 5. Animated counters on stat numbers ---------- */
+  const animateNumber = (el) => {
+    if (reduced) return;
+    const raw = el.textContent.trim();
+    const match = raw.match(/^(\d+)(.*)$/);
+    if (!match) return;
+    const target = parseInt(match[1], 10);
+    const suffix = match[2];
+    const duration = 1400;
+    const start = performance.now();
+    const tick = (now) => {
+      const t = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - t, 3); // easeOutCubic
+      const v = Math.round(eased * target);
+      el.textContent = v + suffix;
+      if (t < 1) requestAnimationFrame(tick);
+      else el.textContent = target + suffix;
+    };
+    el.dataset.original = raw;
+    el.textContent = '0' + suffix;
+    requestAnimationFrame(tick);
+  };
+
+  const counterIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        animateNumber(e.target);
+        counterIO.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.6 });
+
+  document.querySelectorAll('.projects-intro-meta .num').forEach(el => counterIO.observe(el));
+
+  /* ---------- 6. Portrait gentle floating after entry ---------- */
+  const portraitWrap = document.querySelector('.portrait-wrap');
+  if (portraitWrap && !reduced) {
+    const startFloat = () => portraitWrap.classList.add('float');
+    if (portraitWrap.classList.contains('in')) {
+      setTimeout(startFloat, 800);
+    } else {
+      const wait = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            setTimeout(startFloat, 800);
+            wait.disconnect();
+          }
+        });
+      });
+      wait.observe(portraitWrap);
+    }
+  }
+
+  /* ---------- 7. Hero grid parallax on mouse / scroll ---------- */
+  const heroSection = document.querySelector('.hero');
+  if (heroSection && !reduced) {
+    const grid = heroSection; // ::before is on hero
+    let mx = 0, my = 0, sy = 0;
+    const update = () => {
+      const tx = mx * 12 + 0;
+      const ty = my * 12 - sy * 0.05;
+      heroSection.style.setProperty('--px', tx + 'px');
+      heroSection.style.setProperty('--py', ty + 'px');
+    };
+    // Mouse parallax
+    heroSection.addEventListener('mousemove', (e) => {
+      const r = heroSection.getBoundingClientRect();
+      mx = ((e.clientX - r.left) / r.width - 0.5);
+      my = ((e.clientY - r.top) / r.height - 0.5);
+      update();
+    });
+    heroSection.addEventListener('mouseleave', () => { mx = 0; my = 0; update(); });
+    // Scroll parallax
+    window.addEventListener('scroll', () => {
+      sy = window.scrollY;
+      update();
+    }, { passive: true });
+    // Inject CSS rule to use the vars
+    const style = document.createElement('style');
+    style.textContent = `
+      .hero::before {
+        transform: translate3d(var(--px,0), var(--py,0), 0);
+      }
+      .portrait-wrap {
+        --pw-x: 0; --pw-y: 0;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  /* ---------- 8. Portrait magnetic micro-tilt on hover ---------- */
+  const portraitCard = document.querySelector('.portrait-card');
+  if (portraitCard && !reduced) {
+    portraitCard.addEventListener('mousemove', (e) => {
+      const r = portraitCard.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      portraitCard.style.transform =
+        `perspective(1000px) rotateY(${x * 4}deg) rotateX(${-y * 4}deg) translateY(-8px) scale(1.012)`;
+    });
+    portraitCard.addEventListener('mouseleave', () => {
+      portraitCard.style.transform = '';
+    });
+  }
+
+  /* ---------- 9. Custom cursor follower (desktop only) ---------- */
+  const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+  if (!isTouch && !reduced) {
+    const dot = document.querySelector('.cursor-dot');
+    const ring = document.querySelector('.cursor-ring');
+    if (dot && ring) {
+      let dx = 0, dy = 0, rx = 0, ry = 0, tx = 0, ty = 0;
+      let active = false;
+      document.addEventListener('mousemove', (e) => {
+        tx = e.clientX; ty = e.clientY;
+        if (!active) {
+          document.body.classList.add('cursor-on');
+          active = true;
+        }
+      });
+      document.addEventListener('mouseleave', () => {
+        document.body.classList.remove('cursor-on');
+        active = false;
+      });
+      const loop = () => {
+        // dot tracks fast
+        dx += (tx - dx) * 0.6;
+        dy += (ty - dy) * 0.6;
+        dot.style.left = dx + 'px';
+        dot.style.top = dy + 'px';
+        // ring lags
+        rx += (tx - rx) * 0.18;
+        ry += (ty - ry) * 0.18;
+        ring.style.left = rx + 'px';
+        ring.style.top = ry + 'px';
+        requestAnimationFrame(loop);
+      };
+      requestAnimationFrame(loop);
+
+      // Expand ring on interactive elements
+      const expandTargets = 'a, button, .btn, .project, .pill, .principle, .stat, .portrait-card';
+      document.querySelectorAll(expandTargets).forEach(el => {
+        el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+      });
+    }
+  }
+
+})();
+</script>
+
+</body>
+</html>
