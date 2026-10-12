@@ -13,7 +13,7 @@ Sky blue / white / black palette with a full motion layer.
 | **Hero h1 reveal** | Each line of "Reliable / AI systems / for high-stakes / domains." slides up from below with staggered timing |
 | **Section title word cascade** | Every section title splits into words, each fading up with a 60ms stagger |
 | **Section label rule** | The accent underline grows from 0 to 64px when the section enters view |
-| **Animated stat counters** | "10 shipped systems · 35% time cut · 5+ years · 100% checklist" count up from 0 |
+| **Animated stat counters** | "10 shipped systems · 35% time cut · 4+ years · 589 tests" count up from 0 |
 | **Portrait floating** | After entry, the portrait gently floats up-and-down on a 7s loop |
 | **Portrait 3D tilt** | Hovering the portrait tilts it in 3D space following your cursor |
 | **Hero parallax** | The architectural grid background drifts as you move your mouse and scroll |
