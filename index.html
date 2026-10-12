@@ -1232,9 +1232,11 @@
           At Wise, I work as an Enhanced Due Diligence Quality Specialist — running root cause
           analysis on AI conversation failures, building a five-category diagnostic framework that
           cut investigation time by <strong>35%</strong>, and feeding the golden dataset that retrains the models I
-          assess. Alongside that, I ship: a RAG-based CGSS sanctions assistant, a multi-agent
-          competitive intelligence council, a Gemini-based EDD QA automation, and VeriFlow KYC.
-          Production systems, not notebooks.
+          assess. Alongside that, I ship: an autonomous EU compliance monitoring agent with mandatory
+          human approval, a document intelligence platform that measures its own hallucination rate,
+          a cost-aware multi-model router, an agentic RAG assistant, a RAG-based CGSS sanctions assistant,
+          a multi-agent competitive intelligence council, and VeriFlow KYC.
+          Tested, evaluated, open source — production systems, not notebooks.
         </p>
         <p>
           What separates the systems I build is what I refuse to deploy. I treat a "?" on the
@@ -1336,13 +1338,13 @@
   <div class="container">
     <div class="section-label">№ 04 — Portfolio Projects</div>
     <h2 class="section-title reveal">
-      Six shipped systems. Each <em>engineered</em> against a specific failure mode.
+      Ten shipped systems. Each <em>engineered</em> against a specific failure mode.
     </h2>
 
     <div class="projects-intro-meta reveal reveal-blur">
       <div class="stat">
-        <div class="num">06</div>
-        <div class="lbl">Production systems</div>
+        <div class="num">10</div>
+        <div class="lbl">Shipped systems</div>
       </div>
       <div class="stat">
         <div class="num">35%</div>
@@ -1362,7 +1364,99 @@
     <article class="project reveal">
       <div class="num">01</div>
       <div class="body">
-        <h3>CGSS Sanctions Assistant</h3>
+        <h3>Compliance Monitoring Agent <a href="https://github.com/Vickkywhyte/compliance-monitoring-agent" target="_blank" rel="noopener" style="font-family: var(--mono); font-size: 12px; letter-spacing:.05em; color: var(--muted);">↗ GitHub</a></h3>
+        <div class="what">An autonomous agent that monitors EU sanctions lists, EUR-Lex and EBA guidance, detects regulatory changes, summarises them with paragraph-level citations, maps them to the firm's internal processes, and proposes structured action items routed to the right approver.</div>
+        <p>The agent proposes; a human always decides. A deterministic rules engine — never the LLM — sets severity and deadline, and only one service can change a proposal's state. Every fetched document is fenced as untrusted content before it reaches a prompt. Six pipeline stages are evaluated independently across 20 metrics, backed by a STRIDE threat model with 39 security controls, 211 tests, and $0 runtime via a local Ollama fallback.</p>
+        <div class="pill-row">
+          <span class="pill">Python 3.11</span><span class="pill">Pydantic v2</span><span class="pill">Chroma</span><span class="pill">SQLite</span><span class="pill">Ollama</span><span class="pill">Docker</span>
+        </div>
+      </div>
+      <div class="meta-col">
+        <span class="label">Skills demonstrated</span>
+        Agent system design<br/>
+        AI security awareness<br/>
+        Reliability assessment
+        <div class="reliability">
+          <span class="head">Agent Checklist · 02, 03, 04, 06</span>
+          Untrusted-content fencing, mandatory human approval, append-only audit log, low-confidence mappings escalated.
+        </div>
+      </div>
+    </article>
+
+    <!-- 02 -->
+    <article class="project reveal">
+      <div class="num">02</div>
+      <div class="body">
+        <h3>Document Intelligence Platform <a href="https://github.com/Vickkywhyte/doc-intelligence-platform" target="_blank" rel="noopener" style="font-family: var(--mono); font-size: 12px; letter-spacing:.05em; color: var(--muted);">↗ GitHub</a></h3>
+        <div class="what">A RAG system over company documents with a first-class evaluation pipeline — benchmarking 3 chunking strategies × 2 embedding models on a 75-question golden set for accuracy, hallucination, faithfulness, retrieval precision and refusal correctness.</div>
+        <p>Everyone builds RAG; almost nobody measures it. Hallucination is scored per claim, 15 of the 75 questions are deliberately unanswerable so refusals are graded, and every aggregate carries a 95% bootstrap confidence interval. Best configuration: 0.933 answer accuracy. Lowest hallucination rate: 3.1%. The full six-configuration matrix runs for $0.46, with 378 tests behind it.</p>
+        <div class="pill-row">
+          <span class="pill">FastAPI</span><span class="pill">Streamlit</span><span class="pill">Chroma</span><span class="pill">sentence-transformers</span><span class="pill">OpenRouter</span><span class="pill">Docker</span>
+        </div>
+      </div>
+      <div class="meta-col">
+        <span class="label">Skills demonstrated</span>
+        RAG system development<br/>
+        Reliability assessment<br/>
+        Model &amp; cost selection
+        <div class="reliability">
+          <span class="head">Trust Checklist · 01, 02, 03, 06</span>
+          Citation-grounded answers, claim-level hallucination testing, out-of-scope refusals measured.
+        </div>
+      </div>
+    </article>
+
+    <!-- 03 -->
+    <article class="project reveal">
+      <div class="num">03</div>
+      <div class="body">
+        <h3>Multi-Model Router <a href="https://github.com/Vickkywhyte/Multi-Model-Router" target="_blank" rel="noopener" style="font-family: var(--mono); font-size: 12px; letter-spacing:.05em; color: var(--muted);">↗ GitHub</a></h3>
+        <div class="what">A cost-aware AI gateway that classifies each prompt's complexity and routes it to the cheapest capable Gemini model tier — no manual model selection.</div>
+        <p>Simple prompts go to the cheapest tier; everything else goes to a capable mid-tier model. Every request is logged with tokens, latency and cost, humans can score answer quality after the fact, and a live dashboard plots spend against quality so the trade-off is measured rather than assumed.</p>
+        <div class="pill-row">
+          <span class="pill">FastAPI</span><span class="pill">PostgreSQL</span><span class="pill">SQLAlchemy</span><span class="pill">Redis</span><span class="pill">Streamlit</span><span class="pill">Docker</span>
+        </div>
+      </div>
+      <div class="meta-col">
+        <span class="label">Skills demonstrated</span>
+        Model &amp; cost selection<br/>
+        Use-case evaluation<br/>
+        Reliability assessment
+        <div class="reliability">
+          <span class="head">Trust Checklist · 05, 07</span>
+          Human quality-feedback loop and per-request cost / latency monitoring.
+        </div>
+      </div>
+    </article>
+
+    <!-- 04 -->
+    <article class="project reveal">
+      <div class="num">04</div>
+      <div class="body">
+        <h3>Agentic RAG Assistant <a href="https://github.com/Vickkywhyte/agentic_rag_project" target="_blank" rel="noopener" style="font-family: var(--mono); font-size: 12px; letter-spacing:.05em; color: var(--muted);">↗ GitHub</a></h3>
+        <div class="what">A multi-step retrieval system with autonomous planning and a tool-use loop — search, calculate, verify — for multi-hop questions across policy documents.</div>
+        <p>Built to show its working. Each answer comes with an execution trace, cross-document comparisons and a verification step that checks claims against source before they're returned, with hybrid fallback routing when the primary path fails.</p>
+        <div class="pill-row">
+          <span class="pill">FastAPI</span><span class="pill">OpenRouter</span><span class="pill">GPT-4o</span><span class="pill">Claude</span><span class="pill">Llama</span><span class="pill">scikit-learn</span>
+        </div>
+      </div>
+      <div class="meta-col">
+        <span class="label">Skills demonstrated</span>
+        Agent system design<br/>
+        RAG system development<br/>
+        Prompt design (structured outputs)
+        <div class="reliability">
+          <span class="head">Agent Checklist · 04, 09</span>
+          Inspectable reasoning traces; tool results verified before they feed the answer.
+        </div>
+      </div>
+    </article>
+
+    <!-- 05 -->
+    <article class="project reveal">
+      <div class="num">05</div>
+      <div class="body">
+        <h3>CGSS Sanctions Assistant <a href="https://github.com/Vickkywhyte/sanctions-cgss-rag" target="_blank" rel="noopener" style="font-family: var(--mono); font-size: 12px; letter-spacing:.05em; color: var(--muted);">↗ GitHub</a></h3>
         <div class="what">A RAG-based compliance training tool for the ACAMS CGSS examination — ingests sanctions guides, retrieves the relevant segment, and answers questions on OFAC regulations, sanctions frameworks, and evasion techniques.</div>
         <p>Built to be a reference tool, not a guessing tool. Every answer maps back to a specific passage in the source corpus, with retrieval surfaced alongside the answer so the user can verify before they trust.</p>
         <div class="pill-row">
@@ -1381,9 +1475,9 @@
       </div>
     </article>
 
-    <!-- 02 -->
+    <!-- 06 -->
     <article class="project reveal">
-      <div class="num">02</div>
+      <div class="num">06</div>
       <div class="body">
         <h3>Wise Competitive Intelligence Council</h3>
         <div class="what">A multi-agent system simulating four analyst roles — Market, Financial, Regulatory, GTM — with peer review and executive synthesis, producing threat ratings and strategic briefings for cross-border payments.</div>
@@ -1404,11 +1498,11 @@
       </div>
     </article>
 
-    <!-- 03 -->
+    <!-- 07 -->
     <article class="project reveal">
-      <div class="num">03</div>
+      <div class="num">07</div>
       <div class="body">
-        <h3>Budget Assistant <span style="font-family: var(--mono); font-size: 13px; color: var(--muted); letter-spacing:.05em;">— RAG practice</span></h3>
+        <h3>Budget Assistant <span style="font-family: var(--mono); font-size: 13px; color: var(--muted); letter-spacing:.05em;">— RAG practice</span> <a href="https://github.com/Vickkywhyte/rag-practice" target="_blank" rel="noopener" style="font-family: var(--mono); font-size: 12px; letter-spacing:.05em; color: var(--muted);">↗ GitHub</a></h3>
         <div class="what">An HR policy Q&amp;A chatbot that automates employee questions on development budgets — eligibility, amounts, approvals, reimbursement — reducing HR ticket volume on repetitive enquiries.</div>
         <p>A focused RAG application built deliberately narrow. Out-of-scope questions are declined rather than answered from training memory; in-scope questions return the policy section that supports the answer.</p>
         <div class="pill-row">
@@ -1427,9 +1521,9 @@
       </div>
     </article>
 
-    <!-- 04 -->
+    <!-- 08 -->
     <article class="project reveal">
-      <div class="num">04</div>
+      <div class="num">08</div>
       <div class="body">
         <h3>Gemini Gem for EDD QA Automation</h3>
         <div class="what">A custom Google Gemini assistant that analyses Enhanced Due Diligence compliance reviews and produces structured quality assurance reports against an internal rubric.</div>
@@ -1450,9 +1544,9 @@
       </div>
     </article>
 
-    <!-- 05 -->
+    <!-- 09 -->
     <article class="project reveal">
-      <div class="num">05</div>
+      <div class="num">09</div>
       <div class="body">
         <h3>RCA Framework for AI Conversation Analysis</h3>
         <div class="what">A root cause analysis framework that diagnoses AI conversation failures across five categories — Intent Error, Retrieval Failure, Model Limitation, Prompt Engineering, and Compliance Risk — with severity scoring and actionable fixes.</div>
@@ -1473,9 +1567,9 @@
       </div>
     </article>
 
-    <!-- 06 -->
+    <!-- 10 -->
     <article class="project reveal">
-      <div class="num">06</div>
+      <div class="num">10</div>
       <div class="body">
         <h3>VeriFlow KYC</h3>
         <div class="what">An AI-powered Know Your Customer platform that automates identity document verification, facial recognition, and global sanctions screening — with a full audit trail for compliance review.</div>
