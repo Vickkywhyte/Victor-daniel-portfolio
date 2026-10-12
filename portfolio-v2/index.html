@@ -1478,11 +1478,11 @@
     <article class="project reveal">
       <div class="num">06</div>
       <div class="body">
-        <h3>Wise Competitive Intelligence Council</h3>
-        <div class="what">A multi-agent system simulating four analyst roles — Market, Financial, Regulatory, GTM — with peer review and executive synthesis, producing threat ratings and strategic briefings for cross-border payments.</div>
-        <p>An agentic workflow that takes the messy work of cross-functional competitive analysis and makes it auditable: each agent's reasoning is visible, each role has scoped responsibilities, and the synthesis step is the place where errors are caught rather than amplified.</p>
+        <h3>Wise Competitive Intelligence Council <a href="https://wise-competitive-intelligence.vercel.app" target="_blank" rel="noopener" style="font-family: var(--mono); font-size: 12px; letter-spacing:.05em; color: var(--muted);">↗ Live demo</a></h3>
+        <div class="what">A multi-model council of four analyst roles — Market Positioning, Financial &amp; Unit Economics, Regulatory &amp; Compliance, Go-to-Market — each run on a different LLM, followed by anonymised peer review and an executive synthesis with a final threat rating and timed actions.</div>
+        <p>A deliberate three-stage pipeline rather than an open-ended agent loop. Analysts answer in parallel with a self-reported confidence score; each then reviews the others' reports anonymously and never ranks itself; the chair separates where analysts agreed (high-confidence signals) from where they diverged (uncertainty). If one model fails, the council still reports instead of breaking.</p>
         <div class="pill-row">
-          <span class="pill">FastAPI</span><span class="pill">OpenRouter</span><span class="pill">GPT-4o</span><span class="pill">Claude</span><span class="pill">Llama</span><span class="pill">Vercel</span>
+          <span class="pill">FastAPI</span><span class="pill">OpenRouter</span><span class="pill">GPT-4o</span><span class="pill">GPT-4o-mini</span><span class="pill">Claude 3.5 Haiku</span><span class="pill">Llama 3.3 70B</span><span class="pill">Vercel</span>
         </div>
       </div>
       <div class="meta-col">
@@ -1491,8 +1491,8 @@
         Model &amp; cost selection<br/>
         Prompt design (structured outputs)
         <div class="reliability">
-          <span class="head">Agent Checklist · 01, 04, 05</span>
-          Scoped analyst roles, logged intermediate reasoning, max-iteration cap enforced.
+          <span class="head">Agent Checklist · 01, 04</span>
+          Role-scoped prompts, every intermediate report visible, disagreement surfaced rather than averaged away.
         </div>
       </div>
     </article>
